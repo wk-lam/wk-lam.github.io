@@ -1,0 +1,150 @@
+<html>
+<head>
+<title>Gallery</title>
+</head>
+<body>
+
+<h2>Bernoulli bond percolation</h2>
+
+The model is defined as follows. Consider the integer lattice <b>Z</b><sup><i>d</i></sup> with nearest-neighbor edges. Each edge is marked open with probability <i>p</i> and closed with probability 1 - <i>p</i>, independently of each other. Here are some pictures of Bernoulli bond percolation on <b>Z</b><sup>2</sup>. (The edges we keep are the open edges, and the edges we remove are the closed edges.)
+
+<table style="width:100%">
+  <tr>
+    <td><center><img src="0.25.jpg"  width="400" height="400"></center></td>
+    <td><center><img src="0.5.jpg"  width="400" height="400"></center></td> 
+    <td><center><img src="0.75.jpg"  width="400" height="400"></center></td>
+  </tr>
+  <tr>
+    <td> <center><i>p</i> = 0.25</center> </td>
+    <td> <center><i>p</i> = 0.5</center> </td>
+    <td> <center><i>p</i> = 0.75</center> </td>
+  </tr>
+</table>
+<br>
+When <i>p</i> is sufficiently large, almost surely, there exists an infinite connected component of open edges. When <i>p</i> is small, there are only finite component of open edges. There is a phase transition occurs at some critical value <i>p</i> = <i>p</i><sub>c</sub>. When <i>d</i> = 2, this critical value <i>p</i><sub>c</sub> = 0.5.
+
+<h2>Bernoulli site percolation</h2>
+
+Site percolation is very similar to bond percolation. The only difference is that vertices are kept or removed instead of edges. There is also a phase transition. When <i>d</i> = 2, <i>p</i><sub>c</sub> is approximately 0.59.
+
+<table style="width:100%">
+  <tr>
+    <td><center><img src="0.3.jpg"  width="400" height="400"></center></td>
+    <td><center><img src="0.59.jpg"  width="400" height="400"></center></td> 
+    <td><center><img src="0.8.jpg"  width="400" height="400"></center></td>
+  </tr>
+  <tr>
+    <td> <center><i>p</i> = 0.3</center> </td>
+    <td> <center><i>p</i> = 0.59</center> </td>
+    <td> <center><i>p</i> = 0.8</center> </td>
+  </tr>
+</table>
+
+<h2>First-passage percolation</h2>
+Again consider <b>Z</b><sup><i>d</i></sup> with nearest-neighbor edges. Each edge <i>e</i> is assigned a nonnegative random passage time <i>t<sub>e</sub></i>. Assume that the random variables (<i>t<sub>e</sub></i>) are independent and identically distributed. The passage time along a path <i>&gamma;</i> is defined as <i>T</i>(<i>&gamma;</i>) = &sum;<sub><i>e</i>&isin;<i>&gamma;</i></sub> <i>t<sub>e</sub></i>. For any two points <i>x</i>, <i>y</i> in <b>Z</b><sup><i>d</i></sup>, we define the first-passage time from <i>x</i> to <i>y</i> by <i>T</i>(<i>x</i>, <i>y</i>) = inf{<i>T</i>(<i>&gamma;</i>) : <i>&gamma;</i> is a path from <i>x</i> to <i>y</i>}. This <i>T</i> defines a (pseudo)metric on <b>Z</b><sup><i>d</i></sup>. How does a metric ball with large radius look like?
+
+<table style="width:100%">
+  <tr>
+    <td><center><img src="eden.png"  width="550" height="550"></center></td>
+  </tr>
+</table>
+
+<br>
+Above is a simulation of a metric ball with large radius on <b>Z</b><sup>2</sup>, with <i>t<sub>e</sub></i> exponentially distributed. It is known that the ball, divided by its radius, will converge (in certain sense) to a nonrandom, compact, convex set <i><b>B</b></i> with nonempty interior as the radius goes to infinity. It is conjectured that <i><b>B</b></i> is not the Euclidean ball.
+
+<h2>Frozen percolation</h2>
+Consider the planar lattice <b>Z</b><sup>2</sup>. Fix a large integer <i>N</i>. (Volume-)frozen percolation with parameter <i>N</i> is defined as follows. Initially, all the vertices are vacant. Each vertex will try to become occupied, but is allowed to do so only if each of its neighbor is in an occupied cluster of size no larger than <i>N</i>. In other words, clusters grow until their sizes become at least <i>N</i>. When an occupied cluster has size at least <i>N</i>, we say that the cluster is frozen. Here are some pictures of frozen percolation in a 100&times;100 box with different <i>N</i>:
+<center>
+<table style="width:60%">
+  <tr>
+    <td><center><img src="frozen2.png"  width="200" height="200"></center></td>
+    <td><center><img src="frozen.png"  width="200" height="200"></center></td> 
+    <td><center><img src="frozen3.png"  width="200" height="200"></center></td>
+  </tr>
+  <tr>
+    <td> <center><i>N</i> = 10</center> </td>
+    <td> <center><i>N</i> = 100</center> </td>
+    <td> <center><i>N</i> = 3000</center> </td>
+  </tr>
+</table>
+</center>
+<br>
+Each colored region is a frozen cluster. This model exhibits the so-called "self-organized criticality": we don't need to fine tune the parameter to a precise value to see the "critical" behavior.
+
+<h2>Forest fire processes</h2>
+There are many variants of forest fire processes (but none of them is realistic). Many of them have these two features: 1. clusters (or trees) grow in some random manner, and 2. large clusters (or forests) will be burned by some random rule. In fact, frozen percolation defined above can be seen as a forest fire prcoess, if one thinks frozen clusters as burned clusters instead. 
+<br><br>
+Consider the following forest fire process: trees grow at vertices in <b>Z</b><sup>2</sup> at rate 1 according to independent Poisson processes. When there is a left-right crossing of trees, we burn the whole crossing. Trees can grow again at the burned sites. Interesting phenomenon will occur around time <i>t</i><sub>c</sub> := -log(1 - <i>p</i><sub>c</sub>), which is approximately 0.89. Here is a simulation:
+<center>
+<table style="width:80%">
+  <tr>
+    <td><center><img src="ff88.png"  width="200" height="200"></center></td>
+    <td><center><img src="ff89.png"  width="200" height="200"></center></td> 
+    <td><center><img src="ff95.png"  width="200" height="200"></center></td>
+    <td><center><img src="ff96.png"  width="200" height="200"></center></td>
+  </tr>
+  <tr>
+    <td> <center><i>t</i> = 0.88</center> </td>
+    <td> <center><i>t</i> = 0.89</center> </td>
+    <td> <center><i>t</i> = 0.95</center> </td>
+    <td> <center><i>t</i> = 0.96</center> </td>
+  </tr>
+</table>
+</center>
+The crossing burned round <i>t</i> = 0.89 is too "small", so there is another burning shortly after that. Here is another simulation:
+<center>
+<table style="width:80%">
+  <tr>
+    <td><center><img src="ff90.png"  width="200" height="200"></center></td>
+    <td><center><img src="ff91.png"  width="200" height="200"></center></td> 
+    <td><center><img src="ff171.png"  width="200" height="200"></center></td>
+    <td><center><img src="ff172.png"  width="200" height="200"></center></td>
+  </tr>
+  <tr>
+    <td> <center><i>t</i> = 0.90</center> </td>
+    <td> <center><i>t</i> = 0.91</center> </td>
+    <td> <center><i>t</i> = 1.71</center> </td>
+    <td> <center><i>t</i> = 1.72</center> </td>
+  </tr>
+</table>
+</center>
+This time, the burned crossing at time 0.91 is large enough, and so there is no further burning until <i>t</i> = 1.72 (somewhat close to twice of <i>t</i><sub>c</sub>).
+<br><br>
+Now we consider another variant of forest fire processes. We will burn everything that is connected to the left boundary, and we do not allow recovery (trees cannot grow at the burned sites). Here are some pictures:
+<center>
+<table style="width:80%">
+  <tr>
+    <td><center><img src="ff80.png"  width="200" height="200"></center></td>
+    <td><center><img src="ff84.png"  width="200" height="200"></center></td> 
+    <td><center><img src="ff912.png"  width="200" height="200"></center></td>
+    <td><center><img src="ff300.png"  width="200" height="200"></center></td>
+  </tr>
+  <tr>
+    <td> <center><i>t</i> = 0.80</center> </td>
+    <td> <center><i>t</i> = 0.84</center> </td>
+    <td> <center><i>t</i> = 0.91</center> </td>
+    <td> <center><i>t</i> = 3.00</center> </td>
+  </tr>
+</table>
+</center>
+Here, the gray clusters are the burned ones. Again, interesting phenomenon occurs around time <i>t</i><sub>c</sub>. Another sample:
+<center>
+<table style="width:80%">
+  <tr>
+    <td><center><img src="ff78.png"  width="200" height="200"></center></td>
+    <td><center><img src="ff79.png"  width="200" height="200"></center></td> 
+    <td><center><img src="ff104.png"  width="200" height="200"></center></td>
+    <td><center><img src="ff105.png"  width="200" height="200"></center></td>
+  </tr>
+  <tr>
+    <td> <center><i>t</i> = 0.78</center> </td>
+    <td> <center><i>t</i> = 0.79</center> </td>
+    <td> <center><i>t</i> = 1.04</center> </td>
+    <td> <center><i>t</i> = 1.05</center> </td>
+  </tr>
+</table>
+</center>
+In this simulation, many small clusters are burned at earlier times, which prevent burning around <i>t</i><sub>c</sub>. When there is a further burning at <i>t</i> = 1.05, because it is far beyond <i>t</i><sub>c</sub>, the cluster we burn is a "supercritical" cluster, which is relatively huge.
+
+</body>
+</html>
